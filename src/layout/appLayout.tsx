@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 import Header from '@/components/header';
 import Sidebar from '@/components/sideBar';
@@ -9,7 +9,10 @@ interface AppLayoutProps {
 
 const AppLayout = ({ children }: AppLayoutProps) => {
 	return (
-		<Box sx={{ display: 'flex', height: '100vh' }}>
+		<Container
+			maxWidth='xl'
+			sx={{ display: 'flex', height: '100vh', padding: 0, paddingLeft: 0, paddingRight: 0 }}
+			disableGutters>
 			<Sidebar />
 			<Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
 				<Header />
@@ -19,7 +22,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 					{children}
 				</Box>
 			</Box>
-		</Box>
+		</Container>
 	);
 };
 
