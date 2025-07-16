@@ -16,7 +16,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 			<Sidebar />
 			<Box
 				sx={{
-					width: `calc(100% - 220px)`,
+					width: `calc(100% - 240px)`,
 					flexGrow: 1,
 					display: 'flex',
 					flexDirection: 'column',

@@ -1,5 +1,6 @@
-import { Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import AppLayout from '@/layout/appLayout';
 
@@ -12,6 +13,8 @@ const Dashboard = () => {
 		allvisitors: [] as Visitors[],
 		visitors: [] as Visitors[],
 	});
+
+	const navigate = useNavigate();
 
 	const getVisitors = () => {
 		const currentData = localStorage.getItem('visitors');
@@ -44,15 +47,28 @@ const Dashboard = () => {
 		});
 	};
 
+	const handleGoToNewVisitor = () => {
+		navigate('/new-visitor');
+	};
+
 	useEffect(() => {
 		getVisitors();
 	}, []);
 
 	return (
 		<AppLayout>
-			<Typography variant='h5' gutterBottom>
-				Visitantes Ativos
-			</Typography>
+			<Stack
+				width='100%'
+				display='flex'
+				flexDirection='row'
+				justifyContent='space-between'
+				alignItems='flex-start'
+				mb={2}>
+				<Typography variant='h5'>Visitantes Ativos</Typography>
+				<Button variant='contained' color='warning' onClick={handleGoToNewVisitor}>
+					Novo Visitante
+				</Button>
+			</Stack>
 			<VisitorsList data={data} handleSetNewData={handleSetNewData} />
 		</AppLayout>
 	);

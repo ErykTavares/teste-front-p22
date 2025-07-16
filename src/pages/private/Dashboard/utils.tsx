@@ -37,7 +37,7 @@ export const defaultVisitors = [
 	{
 		nome: 'Tony Stark',
 		cpf: '111.111.111-11',
-		sala: 'Laboratório 01',
+		sala: 'room1',
 		nascimento: '1970-05-29',
 		email: 'tony@starkindustries.com',
 		entrada: new Date().toISOString(),
@@ -46,7 +46,7 @@ export const defaultVisitors = [
 	{
 		nome: 'Pepper Potts',
 		cpf: '222.222.222-22',
-		sala: 'Sala de Reuniões',
+		sala: 'room1',
 		nascimento: '1975-03-10',
 		email: 'pepper@stark.com',
 		entrada: new Date().toISOString(),
@@ -55,7 +55,7 @@ export const defaultVisitors = [
 	{
 		nome: 'Bruce Banner',
 		cpf: '333.333.333-33',
-		sala: 'Laboratório 02',
+		sala: 'room2',
 		nascimento: '1969-12-18',
 		email: 'bruce.banner@avengers.org',
 		entrada: new Date().toISOString(),
