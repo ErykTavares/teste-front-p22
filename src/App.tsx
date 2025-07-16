@@ -1,5 +1,3 @@
-import './styles/global.css';
-
 import AppRoutes from './routes/routes';
 
 const App = () => {

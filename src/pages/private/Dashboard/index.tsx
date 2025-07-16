@@ -1,38 +1,53 @@
-import { Box, Button, Container, Typography } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+
+import AppLayout from '@/layout/appLayout';
+
+import VisitorsList from './components/visitorsList';
+import type { Visitors } from './types';
 
 const Dashboard = () => {
-	const navigate = useNavigate();
+	const [data, setData] = useState({
+		allvisitors: [] as Visitors[],
+		visitors: [] as Visitors[],
+	});
 
-	const handleLogout = () => {
-		localStorage.removeItem('isAuthenticated');
-		navigate('/');
+	const getVisitors = () => {
+		const currentData = localStorage.getItem('visitors');
+
+		if (currentData) {
+			const allVisitors: Visitors[] = JSON.parse(currentData);
+			const filteredVisitors = allVisitors.filter((fill: Visitors) => fill.saida === null);
+
+			setData({
+				allvisitors: allVisitors,
+				visitors: filteredVisitors,
+			});
+		}
 	};
+
+	const handleSetNewData = (newVisitorsList: Visitors[]) => {
+		localStorage.setItem('visitors', JSON.stringify(newVisitorsList));
+		const filteredVisitors = newVisitorsList.filter(
+			(fill: Visitors) => fill.saida === null,
+		);
+		setData({
+			allvisitors: newVisitorsList,
+			visitors: filteredVisitors,
+		});
+	};
+
+	useEffect(() => {
+		getVisitors();
+	}, []);
+
 	return (
-		<Container maxWidth='md'>
-			<Box mt={5}>
-				<Typography variant='h4' gutterBottom>
-					Painel de Controle - J.A.R.V.I.S
-				</Typography>
-				<Box mt={3} display='flex' flexDirection='column' gap={2}>
-					<Button variant='contained' onClick={() => navigate('/cadastro')}>
-						Cadastrar Visitante
-					</Button>
-					<Button variant='contained' onClick={() => navigate('/ativos')}>
-						Visitantes Ativos
-					</Button>
-					<Button variant='contained' onClick={() => navigate('/historico')}>
-						Histórico de Visitantes
-					</Button>
-					<Button variant='contained' onClick={() => navigate('/logs')}>
-						Logs do Sistema
-					</Button>
-					<Button variant='outlined' color='secondary' onClick={handleLogout}>
-						Sair
-					</Button>
-				</Box>
-			</Box>
-		</Container>
+		<AppLayout>
+			<Typography variant='h5' gutterBottom>
+				Visitantes Ativos
+			</Typography>
+			<VisitorsList data={data} handleSetNewData={handleSetNewData} />
+		</AppLayout>
 	);
 };
 
