@@ -35,6 +35,8 @@ const Dashboard = () => {
 				allvisitors: defaultVisitors,
 				visitors: filteredVisitors,
 			});
+
+			localStorage.setItem('visitors', JSON.stringify(defaultVisitors));
 		}
 	};
 
