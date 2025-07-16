@@ -12,11 +12,7 @@ export const visitorsColumns = (registrarSaida: (cpf: string) => void): GridColD
 		field: 'entrada',
 		headerName: 'Entrada',
 		flex: 1,
-		valueFormatter: (value: string) => {
-			console.log('Entrada:', value);
-
-			return new Date(value).toLocaleString();
-		},
+		valueFormatter: (value: string) => new Date(value).toLocaleString(),
 	},
 	{
 		field: 'acoes',
