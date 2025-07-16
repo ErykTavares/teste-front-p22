@@ -18,28 +18,31 @@ const VisitorsList = ({ data, handleSetNewData }: VisitorsListProps) => {
 
 	const rows = useMemo(() => visitors.map((item, index) => ({ id: index, ...item })), [visitors]);
 
-	const registrarSaida = (cpf: string) => {
-		const updated = allvisitors.map((v) =>
-			v.cpf === cpf && v.saida === null ? { ...v, saida: new Date().toISOString() } : v,
-		);
+	const postLog = (cpf: string) => {
+		const visitor = allvisitors.find((fin) => fin.cpf === cpf);
 
-		// Atualiza localStorage
-		localStorage.setItem('visitantes', JSON.stringify(updated));
-
-		// Atualiza estado dos visitantes ativos
-		const novosAtivos = updated.filter((v) => v.saida === null);
-		handleSetNewData(novosAtivos);
-
-		// Adiciona log
-		const visitante = allvisitors.find((v) => v.cpf === cpf);
-		if (visitante) {
+		if (visitor) {
 			const logs = JSON.parse(localStorage.getItem('logs') || '[]');
+
 			logs.push({
 				timestamp: new Date().toISOString(),
-				message: `Visitante ${visitante.nome} saiu da torre.`,
+				message: `O visitante ${visitor.nome} saiu.`,
 			});
+
 			localStorage.setItem('logs', JSON.stringify(logs));
 		}
+	};
+
+	const postLeft = (cpf: string) => {
+		const editedVisitors = allvisitors.map((item) =>
+			item.cpf === cpf && item.saida === null
+				? { ...item, saida: new Date().toISOString() }
+				: item,
+		);
+
+		handleSetNewData(editedVisitors);
+
+		postLog(cpf);
 	};
 
 	if (!visitors.length) {
@@ -54,7 +57,7 @@ const VisitorsList = ({ data, handleSetNewData }: VisitorsListProps) => {
 		<Box mt={3} sx={{ width: '100%', height: 500 }}>
 			<DataGrid
 				rows={rows}
-				columns={visitorsColumns(registrarSaida)}
+				columns={visitorsColumns(postLeft)}
 				pagination
 				initialState={{
 					pagination: {
