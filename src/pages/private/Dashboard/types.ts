@@ -6,4 +6,5 @@ export interface Visitors {
 	email?: string;
 	entrada: string;
 	saida: string | null;
+	id?: number;
 }

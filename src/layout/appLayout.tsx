@@ -14,7 +14,13 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 			sx={{ display: 'flex', height: '100vh', padding: 0, paddingLeft: 0, paddingRight: 0 }}
 			disableGutters>
 			<Sidebar />
-			<Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+			<Box
+				sx={{
+					width: `calc(100% - 220px)`,
+					flexGrow: 1,
+					display: 'flex',
+					flexDirection: 'column',
+				}}>
 				<Header />
 				<Box
 					component='main'
