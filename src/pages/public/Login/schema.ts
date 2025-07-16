@@ -1,0 +1,8 @@
+import * as yup from 'yup';
+
+const schema = yup.object({
+	email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
+	password: yup.string().min(6, 'Mínimo de 6 caracteres').required('Senha é obrigatória'),
+});
+
+export default schema;
