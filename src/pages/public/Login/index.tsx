@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Container, Stack, TextField, Typography } from '@mui/material';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 
 import schema from './schema';
@@ -8,8 +8,8 @@ import type { LoginForm } from './types';
 
 const Login = () => {
 	const {
-		register,
 		handleSubmit,
+		control,
 		formState: { errors },
 	} = useForm<LoginForm>({
 		resolver: yupResolver(schema),
@@ -19,6 +19,7 @@ const Login = () => {
 	const loginPost = (data: LoginForm) => {
 		if (data.email.length && data.password.length) {
 			localStorage.setItem('isAuthenticated', 'true');
+
 			navigate('/');
 		}
 	};
@@ -28,26 +29,42 @@ const Login = () => {
 			<Stack height='100%' alignItems='center' justifyContent='center'>
 				<Box p={4} boxShadow={3} borderRadius={2}>
 					<Typography variant='h4' fontWeight='medium' align='center' gutterBottom>
-						Login
+						Entrar
 					</Typography>
 					<form onSubmit={handleSubmit(loginPost)}>
-						<TextField
-							label='E-mail'
-							fullWidth
-							margin='normal'
-							{...register('email')}
-							error={!!errors.email}
-							helperText={errors.email?.message}
+						<Controller
+							name='email'
+							control={control}
+							defaultValue=''
+							render={({ field }) => (
+								<TextField
+									{...field}
+									label='E-mail'
+									fullWidth
+									margin='normal'
+									error={!!errors.email}
+									helperText={errors.email?.message}
+								/>
+							)}
 						/>
-						<TextField
-							label='Senha'
-							type='password'
-							fullWidth
-							margin='normal'
-							{...register('password')}
-							error={!!errors.password}
-							helperText={errors.password?.message}
+
+						<Controller
+							name='password'
+							control={control}
+							defaultValue=''
+							render={({ field }) => (
+								<TextField
+									{...field}
+									label='Senha'
+									type='password'
+									fullWidth
+									margin='normal'
+									error={!!errors.password}
+									helperText={errors.password?.message}
+								/>
+							)}
 						/>
+
 						<Box mt={2}>
 							<Button variant='contained' color='primary' fullWidth type='submit'>
 								Entrar
