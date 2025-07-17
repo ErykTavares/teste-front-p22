@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"composite": true,
 		"jsx": "react",
-		"noEmit": false, // <- necessário para Vercel
-		"target": "ES2022",
+		"noEmit": false,
+		"target": "ESNext",
 		"module": "ESNext",
 		"lib": ["ES2022", "DOM", "DOM.Iterable"],
 		"moduleResolution": "bundler",
@@ -17,6 +17,8 @@
 		"erasableSyntaxOnly": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/*"],
