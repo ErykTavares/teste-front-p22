@@ -4,7 +4,7 @@ import type { GridColDef } from '@mui/x-data-grid';
 
 import type { Visitors } from './types';
 
-export const visitorsColumns = (registrarSaida: (cpf: string) => void): GridColDef[] => [
+export const visitorsColumns = (postLog: (cpf: string, room: string) => void): GridColDef[] => [
 	{ field: 'nome', headerName: 'Nome', flex: 1 },
 	{ field: 'cpf', headerName: 'CPF', flex: 1 },
 	{ field: 'sala', headerName: 'Sala', flex: 1 },
@@ -21,7 +21,7 @@ export const visitorsColumns = (registrarSaida: (cpf: string) => void): GridColD
 		flex: 1,
 		renderCell: ({ row }) => (
 			<Tooltip title='Registrar Saída'>
-				<IconButton color='warning' size='small' onClick={() => registrarSaida(row.cpf)}>
+				<IconButton color='warning' size='small' onClick={() => postLog(row.cpf, row.sala)}>
 					<ExitToAppIcon />
 				</IconButton>
 			</Tooltip>

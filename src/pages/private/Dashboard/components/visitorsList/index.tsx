@@ -18,7 +18,7 @@ const VisitorsList = ({ data, handleSetNewData }: VisitorsListProps) => {
 
 	const rows = useMemo(() => visitors.map((item, index) => ({ id: index, ...item })), [visitors]);
 
-	const postLog = (cpf: string) => {
+	const postLog = (cpf: string, room: string) => {
 		const visitor = allvisitors.find((fin) => fin.cpf === cpf);
 
 		if (visitor) {
@@ -26,14 +26,14 @@ const VisitorsList = ({ data, handleSetNewData }: VisitorsListProps) => {
 
 			logs.push({
 				timestamp: new Date().toISOString(),
-				message: `O visitante ${visitor.nome} saiu.`,
+				message: `O visitante ${visitor.nome} saiu da sala ${room}.`,
 			});
 
 			localStorage.setItem('logs', JSON.stringify(logs));
 		}
 	};
 
-	const postLeft = (cpf: string) => {
+	const postLeft = (cpf: string, room: string) => {
 		const editedVisitors = allvisitors.map((item) =>
 			item.cpf === cpf && item.saida === null
 				? { ...item, saida: new Date().toISOString() }
@@ -42,7 +42,7 @@ const VisitorsList = ({ data, handleSetNewData }: VisitorsListProps) => {
 
 		handleSetNewData(editedVisitors);
 
-		postLog(cpf);
+		postLog(cpf, room);
 	};
 
 	if (!visitors.length) {

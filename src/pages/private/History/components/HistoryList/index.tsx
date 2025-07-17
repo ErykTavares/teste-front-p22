@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useMemo } from 'react';
 
@@ -13,6 +13,14 @@ const HistoryList = ({ visitorysHistory }: HistoryListProps) => {
 		() => visitorysHistory.map((item, index) => ({ id: index, ...item })),
 		[visitorysHistory],
 	);
+
+	if (!visitorysHistory.length) {
+		return (
+			<Typography variant='body1' color='textSecondary'>
+				Nenhum visitante no momento.
+			</Typography>
+		);
+	}
 
 	return (
 		<Box mt={3} sx={{ width: '100%', height: 500 }}>

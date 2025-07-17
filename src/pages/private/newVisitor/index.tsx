@@ -3,6 +3,8 @@ import {
 	Alert,
 	Box,
 	Button,
+	Card,
+	CardContent,
 	Container,
 	FormControl,
 	FormHelperText,
@@ -84,97 +86,113 @@ const NewVisitor = () => {
 						Limite de 3 visitantes por sala atingido.
 					</Alert>
 				) : null}
-				<Box mt={4}>
-					<Typography variant='h5' gutterBottom>
-						Cadastrar Visitante
-					</Typography>
+				<Card sx={{ height: 'max-content', marginTop: 3 }}>
+					<CardContent sx={{ height: '100%', overflowY: 'auto' }}>
+						<Box>
+							<Typography variant='h5' gutterBottom>
+								Cadastrar Visitante
+							</Typography>
 
-					<form onSubmit={handleSubmit(postVisitor)}>
-						<Controller
-							name='name'
-							control={control}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label='Nome'
-									fullWidth
-									margin='normal'
-									error={!!errors.name}
-									helperText={errors.name?.message}
+							<form onSubmit={handleSubmit(postVisitor)}>
+								<Controller
+									name='name'
+									control={control}
+									render={({ field }) => (
+										<TextField
+											{...field}
+											label='Nome'
+											fullWidth
+											margin='normal'
+											error={!!errors.name}
+											helperText={errors.name?.message}
+										/>
+									)}
 								/>
-							)}
-						/>
 
-						<Controller
-							name='email'
-							control={control}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label='E-mail'
-									fullWidth
-									margin='normal'
-									error={!!errors.email}
-									helperText={errors.email?.message}
+								<Controller
+									name='email'
+									control={control}
+									render={({ field }) => (
+										<TextField
+											{...field}
+											label='E-mail'
+											fullWidth
+											margin='normal'
+											error={!!errors.email}
+											helperText={errors.email?.message}
+										/>
+									)}
 								/>
-							)}
-						/>
 
-						<Controller
-							name='cpf'
-							control={control}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label='CPF'
-									fullWidth
-									margin='normal'
-									error={!!errors.cpf}
-									helperText={errors.cpf?.message}
+								<Controller
+									name='cpf'
+									control={control}
+									render={({ field }) => (
+										<TextField
+											{...field}
+											label='CPF'
+											fullWidth
+											margin='normal'
+											error={!!errors.cpf}
+											helperText={errors.cpf?.message}
+										/>
+									)}
 								/>
-							)}
-						/>
 
-						<Controller
-							name='room'
-							control={control}
-							render={({ field }) => (
-								<FormControl fullWidth margin='normal' error={!!errors.room}>
-									<InputLabel id='sala-label'>Sala</InputLabel>
-									<Select labelId='sala-label' id='sala' label='Sala' {...field}>
-										{rooms.map((room) => (
-											<MenuItem key={room.value} value={room.value}>
-												{room.label}
-											</MenuItem>
-										))}
-									</Select>
-									<FormHelperText>{errors.room?.message}</FormHelperText>
-								</FormControl>
-							)}
-						/>
-
-						<Controller
-							name='birthDate'
-							control={control}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label='Data de Nascimento'
-									type='date'
-									fullWidth
-									margin='normal'
-									slotProps={{ inputLabel: { shrink: true } }}
-									error={!!errors.birthDate}
-									helperText={errors.birthDate?.message}
+								<Controller
+									name='room'
+									control={control}
+									render={({ field }) => (
+										<FormControl
+											fullWidth
+											margin='normal'
+											error={!!errors.room}>
+											<InputLabel id='sala-label'>Sala</InputLabel>
+											<Select
+												labelId='sala-label'
+												id='sala'
+												label='Sala'
+												{...field}>
+												{rooms.map((room) => (
+													<MenuItem key={room.value} value={room.value}>
+														{room.label}
+													</MenuItem>
+												))}
+											</Select>
+											<FormHelperText>{errors.room?.message}</FormHelperText>
+										</FormControl>
+									)}
 								/>
-							)}
-						/>
 
-						<Button variant='contained' type='submit' fullWidth sx={{ mt: 2 }}>
-							Cadastrar
-						</Button>
-					</form>
-				</Box>
+								<Controller
+									name='birthDate'
+									control={control}
+									render={({ field }) => (
+										<TextField
+											{...field}
+											label='Data de Nascimento'
+											type='date'
+											fullWidth
+											margin='normal'
+											slotProps={{ inputLabel: { shrink: true } }}
+											error={!!errors.birthDate}
+											helperText={errors.birthDate?.message}
+										/>
+									)}
+								/>
+
+								<Button
+									color='success'
+									variant='contained'
+									type='submit'
+									fullWidth
+									sx={{ mt: 2 }}>
+									Cadastrar
+								</Button>
+							</form>
+						</Box>
+					</CardContent>
+				</Card>
 			</Container>
 		</AppLayout>
 	);
