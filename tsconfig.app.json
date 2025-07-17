@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"composite": true,
-		"jsx": "react-jsx",
+		"jsx": "react",
 		"noEmit": false, // <- necessário para Vercel
 		"target": "ES2022",
 		"module": "ESNext",
