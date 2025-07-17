@@ -1,6 +1,9 @@
 import './styles/global.css';
 
+import React from 'react';
+
 import AppRoutes from './routes/routes';
+
 
 const App = () => {
 	return <AppRoutes />;

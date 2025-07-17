@@ -1,5 +1,7 @@
 import { Button, Stack, Typography } from '@mui/material';
+import React from 'react';
 import { useNavigate } from 'react-router';
+
 
 interface PageHeaderProps {
 	title: string;

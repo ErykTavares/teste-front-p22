@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { columns } from '../../utils';
 

@@ -1,8 +1,10 @@
 import { Box, Divider, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
 import { menuItems } from './utils';
+
 
 const Sidebar = () => {
 	const navigate = useNavigate();

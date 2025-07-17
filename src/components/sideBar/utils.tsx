@@ -4,6 +4,8 @@ import {
   ListAlt,
   PersonAdd,
 } from '@mui/icons-material';
+import React from 'react';
+
 
 export const menuItems = [
   { text: 'Dashboard', path: '/', icon: <Dashboard /> },

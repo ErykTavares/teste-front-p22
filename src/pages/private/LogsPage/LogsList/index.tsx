@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, List, ListItem, ListItemText, Typography } from '@mui/material';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import type { Logs } from '../types';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import Dashboard from '@/pages/private/Dashboard';
@@ -7,6 +8,7 @@ import NewVisitor from '@/pages/private/newVisitor';
 import Login from '@/pages/public/Login';
 
 import PrivateRoute from './privateRoute';
+
 
 const AppRoutes = () => {
 	return (

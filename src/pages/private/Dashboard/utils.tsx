@@ -1,6 +1,7 @@
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { IconButton, Tooltip } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
+import React from 'react';
 
 import type { Visitors } from './types';
 

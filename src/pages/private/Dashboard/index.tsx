@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PageHeader from '@/components/PageHeader';
 import AppLayout from '@/layout/appLayout';
@@ -41,7 +41,7 @@ const Dashboard = () => {
 	const handleSetNewData = (newVisitorsList: Visitors[]) => {
 		localStorage.setItem('visitors', JSON.stringify(newVisitorsList));
 		const filteredVisitors = newVisitorsList.filter((fill: Visitors) => fill.saida === null);
-		
+
 		setData({
 			allvisitors: newVisitorsList,
 			visitors: filteredVisitors,
