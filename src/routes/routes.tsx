@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 
 import Dashboard from '@/pages/private/Dashboard';
 import History from '@/pages/private/History';
-import Logs from '@/pages/private/Logs';
+import Logs from '@/pages/private/LogsPage';
 import NewVisitor from '@/pages/private/newVisitor';
 import Login from '@/pages/public/Login';
 
