@@ -42,7 +42,7 @@ const Sidebar = () => {
 				flexDirection: 'column',
 				pt: 2,
 			}}>
-			<Box sx={{ px: 2, mb: 2, fontWeight: 'bold', fontSize: '1.25rem' }}>Stark Tower</Box>
+			<Box sx={{ px: 2, mb: 2, fontWeight: 'bold', fontSize: '1.25rem' }}>Menu</Box>
 			<Divider sx={{ bgcolor: 'white' }} />
 			<List sx={{ py: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>{menuList}</List>
 		</Box>

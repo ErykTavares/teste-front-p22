@@ -28,6 +28,7 @@ const Dashboard = () => {
 			const filteredVisitors = defaultVisitors.filter(
 				(fill: Visitors) => fill.saida === null,
 			);
+
 			setData({
 				allvisitors: defaultVisitors,
 				visitors: filteredVisitors,
@@ -40,6 +41,7 @@ const Dashboard = () => {
 	const handleSetNewData = (newVisitorsList: Visitors[]) => {
 		localStorage.setItem('visitors', JSON.stringify(newVisitorsList));
 		const filteredVisitors = newVisitorsList.filter((fill: Visitors) => fill.saida === null);
+		
 		setData({
 			allvisitors: newVisitorsList,
 			visitors: filteredVisitors,

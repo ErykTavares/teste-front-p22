@@ -3,7 +3,7 @@ import { Box, Button, Container, Stack, TextField, Typography } from '@mui/mater
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 
-import schema from './schema';
+import { loginSchema } from './schema';
 import type { LoginForm } from './types';
 
 const Login = () => {
@@ -12,7 +12,11 @@ const Login = () => {
 		control,
 		formState: { errors },
 	} = useForm<LoginForm>({
-		resolver: yupResolver(schema),
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+		resolver: yupResolver(loginSchema),
 	});
 	const navigate = useNavigate();
 
@@ -29,13 +33,12 @@ const Login = () => {
 			<Stack height='100%' alignItems='center' justifyContent='center'>
 				<Box p={4} boxShadow={3} borderRadius={2}>
 					<Typography variant='h4' fontWeight='medium' align='center' gutterBottom>
-						Entrar
+						Login
 					</Typography>
 					<form onSubmit={handleSubmit(loginPost)}>
 						<Controller
 							name='email'
 							control={control}
-							defaultValue=''
 							render={({ field }) => (
 								<TextField
 									{...field}
@@ -51,7 +54,6 @@ const Login = () => {
 						<Controller
 							name='password'
 							control={control}
-							defaultValue=''
 							render={({ field }) => (
 								<TextField
 									{...field}
